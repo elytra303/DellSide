@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChurkaClient</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      text-align: center;
+      padding-bottom: 80px; /* Добавлен отступ снизу для прокрутки */
+    }
+    .background-c {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60vw;
+      color: #8a2be2;
+      opacity: 0.05;
+      font-weight: bold;
+      z-index: 0;
+      user-select: none;
+      pointer-events: none;
+      text-shadow:
+        0 0 10px #8a2be2,
+        0 0 20px #8a2be2,
+        0 0 30px #8a2be2;
+    }
+    header {
+      padding: 20px;
+      background-color: #1a1a1a;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff00ff;
+      position: relative;
+      z-index: 1;
+      text-shadow:
+        0 0 5px #ff00ff,
+        0 0 10px #ff00ff;
+    }
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #ff00ff;
+      margin-top: 60px;
+      position: relative;
+      z-index: 1;
+      text-shadow:
+        0 0 5px #ff00ff,
+        0 0 10px #ff00ff;
+    }
+    .subtitle {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #cccccc;
+      position: relative;
+      z-index: 1;
+      text-shadow:
+        0 0 3px #ff99ff;
+    }
+    .buttons {
+      margin-top: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #a000f0, #ff00c8);
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow:
+        0 0 8px #a000f0,
+        0 0 15px #ff00c8;
+      transition: box-shadow 0.3s ease;
+    }
+    .btn:hover {
+      box-shadow:
+        0 0 12px #a000f0,
+        0 0 25px #ff00c8;
+    }
+    .notice {
+      margin: 40px auto;
+      max-width: 600px;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      color: #ffffff;
+      font-size: 16px;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 0 10px #a000f0aa;
+      text-shadow: 0 0 3px #ff66ff;
+    }
+    .square {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 30px auto;
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+      text-align: left;
+      box-shadow:
+        0 0 15px #a000f0cc;
+      color: #ddd;
+      text-shadow: 0 0 4px #ff66ffaa;
+    }
+    .footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #777;
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 15px;
+    }
+    .footer > div:first-child {
+      font-size: 18px;
+      color: #cc99ff;
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-shadow:
+        0 0 8px #a000f0cc,
+        0 0 15px #ff00ffbb;
+      letter-spacing: 1.2px;
+      position: relative;
+      top: -15px;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      text-align: left;
+      color: #fff;
+    }
+    .column {
+      flex: 1 1 250px;
+      min-width: 220px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff00ff;
+      margin-bottom: 10px;
+      text-shadow:
+        0 0 5px #ff00ff,
+        0 0 10px #ff66ff;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    /* Квадраты вокруг каждого пункта */
+    .links > * {
+      background-color: #1a1a1a;
+      border: 2px solid #a000f0;
+      border-radius: 8px;
+      padding: 6px 12px;
+      box-shadow:
+        0 0 8px #a000f0,
+        0 0 15px #ff00c8;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      color: #ff66ff !important;
+      text-shadow: 0 0 4px #ff99ff;
+    }
+    /* Для div внутри links, которые не ссылки, цвет чуть светлее и без underline */
+    .links > div {
+      color: #ccc !important;
+      text-shadow: 0 0 3px #bb77cc;
+      border-color: #7700aa;
+      box-shadow:
+        0 0 6px #7700aa,
+        0 0 12px #aa00cc;
+    }
+    /* При наведении на ссылки меняем цвет и светимость */
+    .links > a:hover {
+      color: #ffaaff !important;
+      border-color: #ff33ff;
+      box-shadow:
+        0 0 12px #ff33ff,
+        0 0 25px #ff99ff;
+    }
+
+    /* Адаптив */
+    @media (max-width: 700px) {
+      .footer-top {
+        flex-direction: column;
+      }
+      .column {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-c">C</div>
+
+  <header>ChurkaClient</header>
+
+  <div class="title">Лучший лаунчер для комфортной игры в Minecraft</div>
+  <div class="subtitle">Наслаждайтесь игрой без лагов и с дополнительными функциями</div>
+
+  <div class="buttons">
+    <a href="https://ify.ac/1YpV" class="btn">Скачать лучший клиент!</a>
+  </div>
+
+  <div class="notice">мб овнер одобрит, хз</div>
+
+  <div class="square">
+    <p>Churka client - лучшее бесплатное ПО для майнкрафта, Aura, KexAura, TriggerBot - все это работает! И ждёт вас в Churka client! Скачивайте Churka client и наслаждайтесь игровым процессом.</p>
+  </div>
+
+  <div class="square">
+    <p>Обходы на grim, matrix и многие другие античиты! Лучшая оптимизация для всех пк/ноутбуков! С этим читом вы можете пенить все сервера!</p>
+  </div>
+
+  <div class="footer">
+    <div>2025 Churka Product</div>
+
+    <div class="footer-top">
+      <div class="column">
+        <div class="section-title">Соц сети</div>
+        <div class="links">
+          <a href="https://discord.com/invite/uSpv6CkZQW" target="_blank" rel="noopener noreferrer">Дискорд</a>
+          <a href="https://vk.com/xsk1llz" target="_blank" rel="noopener noreferrer">Вконтакте</a>
+          <a href="https://t.me/ChurkaClient" target="_blank" rel="noopener noreferrer">Телеграм</a>
+        </div>
+      </div>
+      <div class="column">
+        <div class="section-title">Ютуберы</div>
+        <div class="links">
+          <a href="https://www.youtube.com/@frizerhvh" target="_blank" rel="noopener noreferrer">FrizerHvH</a>
+          <div>неизвестно</div>
+          <div>неизвестно</div>
+          <div>неизвестно</div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="section-title">Создатель</div>
+        <div class="links">
+          <div>XsK1LLz</div>
+          <div>Дискорд: xsk1llz</div>
+          <a href="https://t.me/xsk1llz" target="_blank" rel="noopener noreferrer">Телеграм: XsK1LLz</
+
