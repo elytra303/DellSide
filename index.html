@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DellSideClient</title>
+  <title>DellSide</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #ffffff; /* белый фон */
-      color: #003366; /* тёмно-синий текст */
+      background-color: #0a0a0a; /* темный фон */
+      color: #b0c7d9; /* светло-серый с голубым оттенком */
       text-align: center;
       padding-bottom: 80px;
     }
@@ -20,35 +20,35 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 60vw;
-      color: #003366;
+      color: #1e3a5f; /* темно-голубой */
       opacity: 0.05;
       font-weight: bold;
       z-index: 0;
       user-select: none;
       pointer-events: none;
       text-shadow:
-        0 0 10px #003366,
-        0 0 20px #003366,
-        0 0 30px #003366;
+        0 0 10px #1e3a5f,
+        0 0 20px #1e3a5f,
+        0 0 30px #1e3a5f;
     }
 
     header {
       padding: 20px;
-      background-color: #003366;
+      background-color: #12375a; /* темно-голубой фон */
       font-size: 24px;
       font-weight: bold;
-      color: #ffcc00;
+      color: #9cc4e4; /* светло-голубой текст */
       position: relative;
       z-index: 1;
       text-shadow:
-        0 0 5px #ffcc00,
-        0 0 10px #ffcc00;
+        0 0 5px #9cc4e4,
+        0 0 10px #9cc4e4;
     }
 
     .title {
       font-size: 32px;
       font-weight: bold;
-      color: #003366;
+      color: #8bb3d9; /* светло-голубой */
       margin-top: 60px;
       position: relative;
       z-index: 1;
@@ -57,7 +57,7 @@
     .subtitle {
       font-size: 20px;
       margin-top: 10px;
-      color: #666666;
+      color: #7a8ca5; /* более темный голубой */
       position: relative;
       z-index: 1;
     }
@@ -73,38 +73,38 @@
       font-size: 18px;
       border: none;
       border-radius: 8px;
-      background: linear-gradient(90deg, #003366, #ffcc00);
-      color: #ffffff;
+      background: linear-gradient(90deg, #12375a, #3a6699); /* темно-голубой градиент */
+      color: #d1e4ff; /* светло-голубой текст */
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
       box-shadow:
-        0 0 8px #003366,
-        0 0 15px #ffcc00;
+        0 0 8px #12375a,
+        0 0 15px #3a6699;
       transition: box-shadow 0.3s ease;
     }
 
     .btn:hover {
       box-shadow:
-        0 0 12px #003366,
-        0 0 25px #ffcc00;
+        0 0 12px #3a6699,
+        0 0 25px #6b95d1;
     }
 
     .notice {
       margin: 40px auto;
       max-width: 600px;
-      background-color: #ffcc00;
+      background-color: #1e3a5f;
       padding: 20px;
       border-radius: 10px;
-      color: #003366;
+      color: #cde4ff;
       font-size: 16px;
       position: relative;
       z-index: 1;
-      box-shadow: 0 0 10px #00336699;
+      box-shadow: 0 0 10px #3a6699aa;
     }
 
     .square {
-      background-color: #f2f2f2;
+      background-color: #141f2f;
       padding: 20px;
       border-radius: 10px;
       margin: 30px auto;
@@ -112,13 +112,13 @@
       position: relative;
       z-index: 1;
       text-align: left;
-      color: #003366;
+      color: #a1b7d6;
     }
 
     .footer {
       margin-top: 50px;
       font-size: 14px;
-      color: #666666;
+      color: #5a6d8c;
       position: relative;
       z-index: 1;
       max-width: 900px;
@@ -129,7 +129,7 @@
 
     .footer > div:first-child {
       font-size: 18px;
-      color: #003366;
+      color: #8bb3d9;
       margin-bottom: 10px;
       font-weight: 600;
       letter-spacing: 1.2px;
@@ -141,7 +141,7 @@
       flex-wrap: wrap;
       gap: 20px;
       text-align: left;
-      color: #003366;
+      color: #8bb3d9;
     }
 
     .column {
@@ -152,7 +152,7 @@
     .section-title {
       font-size: 18px;
       font-weight: bold;
-      color: #003366;
+      color: #8bb3d9;
       margin-bottom: 10px;
     }
 
@@ -163,31 +163,32 @@
     }
 
     .links > * {
-      background-color: #ffffff;
-      border: 2px solid #003366;
+      background-color: #0a1a33;
+      border: 2px solid #12375a;
       border-radius: 8px;
       padding: 6px 12px;
       box-shadow:
-        0 0 8px #00336633,
-        0 0 15px #ffcc00aa;
+        0 0 8px #12375a33,
+        0 0 15px #3a6699aa;
       transition: box-shadow 0.3s ease, border-color 0.3s ease;
-      color: #003366 !important;
+      color: #aac7ff !important;
+      text-shadow: 0 0 3px #2a4a77;
     }
 
     .links > div {
-      color: #666666 !important;
-      border-color: #003366aa;
+      color: #7891b3 !important;
+      border-color: #12375aaa;
       box-shadow:
-        0 0 6px #00336655,
-        0 0 12px #ffcc0055;
+        0 0 6px #12375a55,
+        0 0 12px #3a669955;
     }
 
     .links > a:hover {
-      color: #ffcc00 !important;
-      border-color: #ffcc00;
+      color: #7ec0ff !important;
+      border-color: #7ec0ff;
       box-shadow:
-        0 0 12px #ffcc00,
-        0 0 25px #ffcc00;
+        0 0 12px #7ec0ff,
+        0 0 25px #a6cfff;
     }
 
     @media (max-width: 700px) {
